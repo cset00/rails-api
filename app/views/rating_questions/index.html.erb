@@ -1,7 +1,11 @@
-<div class="flash-notice"><%= flash[:notice] %></div>
+
 <%= link_to "New Question", new_rating_question_path %>
 <div class='questions'>
   <% @rating_questions.each do |question| %>
-    <%= question.title %>
+     <p id='question_<%= question.id %>'> 
+     <%= question.title %> 
+      <%= link_to "Edit Question", [:edit, question] %>
+      <%= link_to "Delete Question", question, method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>  
+     </p>
   <% end %>
 </div>

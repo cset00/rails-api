@@ -16,5 +16,14 @@ RSpec.describe "Creating questions" do
     end
   end
 
-  it "cannot create a new question without a title"
+  it "cannot create a new question without a title" do
+    visit "/"
+    click_link "New Question"
+    fill_in "Title", with: ""
+    click_button "Create Rating question"
+
+    within(".flash-errors") do
+      expect(page).to have_content("Your question has NOT been created.")
+    end
+  end
 end
